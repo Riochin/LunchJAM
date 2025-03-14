@@ -39,3 +39,16 @@ pip install -r requirements.txt
 uvicorn main:app --reload
 ```
 → http://127.0.0.1:8000/docs にアクセスしてAPI確認！
+
+## 📝コミットメッセージ（守らなくてもいい！！）
+この記事を参照👇
+https://qiita.com/itosho/items/9565c6ad2ffc24c09364
+
+## 🏠branch命名規則（守らなくてもいい！！）
+https://qiita.com/Hashimoto-Noriaki/items/5d990e21351b331d2aa1
+
+👆の記事を参照に、たとえば...
+
+> feature/Riochin/add-login-function
+
+といった感じにしたい！（守らなくてもいい！！）
