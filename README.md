@@ -1,4 +1,3 @@
-# LunchJAM
 # 食堂混雑可視化アプリ 🍽️
 
 ## 🎯 プロジェクト概要
@@ -18,6 +17,12 @@ git clone git@github.com:Riochin/LunchJAM.git
 cd LunchJAM
 ```
 
+### 2. バックエンドで仮想環境を構築
+```sh
+cd backend
+python -m venv venv
+```
+
 ## アプリの立ち上げ
 ### フロントエンド
 ```sh
@@ -28,11 +33,6 @@ npm run dev
 → http://localhost:3000 で起動！
 
 ### バックエンド
-👇初回のみ
-```sh
-cd backend
-python -m venv venv
-```
 ```sh
 source venv/bin/activate  # Windowsなら venv\Scripts\activate
 pip install -r requirements.txt
