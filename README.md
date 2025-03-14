@@ -14,5 +14,5 @@
 ## 🚀 セットアップ
 ### 1. リポジトリをクローン
 ```sh
-git clone https://github.com/your-team/your-repo.git
-cd your-repo
+git clone git@github.com:Riochin/LunchJAM.git
+cd LunchJAM
