@@ -16,3 +16,26 @@
 ```sh
 git clone git@github.com:Riochin/LunchJAM.git
 cd LunchJAM
+```
+
+## アプリの立ち上げ
+### フロントエンド
+```sh
+cd frontend
+npm install
+npm run dev
+```
+→ http://localhost:3000 で起動！
+
+### バックエンド
+👇初回のみ
+```sh
+cd backend
+python -m venv venv
+```
+```sh
+source venv/bin/activate  # Windowsなら venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn main:app --reload
+```
+→ http://127.0.0.1:8000/docs にアクセスしてAPI確認！
