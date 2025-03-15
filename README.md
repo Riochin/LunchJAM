@@ -40,7 +40,7 @@ uvicorn main:app --reload
 ```
 → http://127.0.0.1:8000/docs にアクセスしてAPI確認！
 
-## 📝コミットメッセージ（守らなくてもいい！！）
+## 📝コミットメッセージの書き方（守らなくてもいい！！）
 この記事を参照👇
 https://qiita.com/itosho/items/9565c6ad2ffc24c09364
 
