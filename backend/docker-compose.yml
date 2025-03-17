@@ -9,12 +9,13 @@ services:
     container_name: fastapi_app  # コンテナの名前を fastapi_app に設定
     ports:
       - "8000:8000"  # ホストの 8000 番ポートをコンテナの 8000 番ポートにマッピング
+    working_dir: /app          # ← 追加: コンテナ内での作業ディレクトリを /app に設定
     depends_on:
       - db  # db サービス（PostgreSQL）が起動してからバックエンドを起動
     volumes:
       - .:/app  # ローカルのプロジェクトディレクトリをコンテナ内の /app にマウント
     environment:
-      - DATABASE_URL=postgresql://user:password@localhost:5432/mydatabase  # データベース接続用のURL
+      - DATABASE_URL=postgresql://user:password@db:5432/mydatabase  # データベース接続用のURL
     networks:
       - backend_network
 
