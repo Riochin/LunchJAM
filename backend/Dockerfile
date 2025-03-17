@@ -16,5 +16,8 @@ RUN pip install alembic
 # アプリのコードをコピー
 COPY . .
 
+# 環境変数を設定
+ENV DATABASE_URL=db
+
 # FastAPI を起動（リロード付き）
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
