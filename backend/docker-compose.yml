@@ -1,0 +1,38 @@
+version: '3.8'
+
+networks:
+  backend_network:
+
+services:
+  backend:
+    build: .  # このディレクトリの Dockerfile を基にバックエンドコンテナをビルド
+    container_name: fastapi_app  # コンテナの名前を fastapi_app に設定
+    ports:
+      - "8000:8000"  # ホストの 8000 番ポートをコンテナの 8000 番ポートにマッピング
+    depends_on:
+      - db  # db サービス（PostgreSQL）が起動してからバックエンドを起動
+    volumes:
+      - .:/app  # ローカルのプロジェクトディレクトリをコンテナ内の /app にマウント
+    environment:
+      - DATABASE_URL=postgresql://user:password@localhost:5432/mydatabase  # データベース接続用のURL
+    networks:
+      - backend_network
+
+  db:
+    image: postgres:15  # PostgreSQL の公式イメージを使用
+    container_name: postgres_db  # コンテナ名を postgres_db に設定
+    restart: always  # コンテナが停止しても再起動する設定
+    environment:
+      POSTGRES_USER: user  # PostgreSQL のユーザー名
+      POSTGRES_PASSWORD: password  # PostgreSQL のパスワード
+      POSTGRES_DB: mydatabase  # 作成するデータベース名
+    ports:
+      - "5432:5432"  # ホストの 5432 番ポートをコンテナの 5432 番ポートにマッピング
+    volumes:
+      - pg_data:/var/lib/postgresql/data  # データ永続化用のボリューム設定
+    networks:
+      - backend_network
+
+# データ永続化用のボリューム設定
+volumes:
+  pg_data:  # コンテナ再起動時でもデータが保持されるように設定
