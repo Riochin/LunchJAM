@@ -10,6 +10,9 @@ COPY requirements.txt .
 # 依存パッケージをインストール
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Alembicをインストール
+RUN pip install alembic
+
 # アプリのコードをコピー
 COPY . .
 
