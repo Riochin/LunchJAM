@@ -1,4 +1,3 @@
-# LunchJAM
 # 食堂混雑可視化アプリ 🍽️
 
 ## 🎯 プロジェクト概要
@@ -14,5 +13,42 @@
 ## 🚀 セットアップ
 ### 1. リポジトリをクローン
 ```sh
-git clone https://github.com/your-team/your-repo.git
-cd your-repo
+git clone git@github.com:Riochin/LunchJAM.git
+cd LunchJAM
+```
+
+### 2. バックエンドで仮想環境を構築
+```sh
+cd backend
+python -m venv venv
+```
+
+## アプリの立ち上げ
+### フロントエンド
+```sh
+cd frontend
+npm install
+npm run dev
+```
+→ http://localhost:3000 で起動！
+
+### バックエンド
+```sh
+source venv/bin/activate  # Windowsなら venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn main:app --reload
+```
+→ http://127.0.0.1:8000/docs にアクセスしてAPI確認！
+
+## 📝コミットメッセージの書き方（守らなくてもいい！！）
+この記事を参照👇
+https://qiita.com/itosho/items/9565c6ad2ffc24c09364
+
+## 🏠branch命名規則（守らなくてもいい！！）
+https://qiita.com/Hashimoto-Noriaki/items/5d990e21351b331d2aa1
+
+👆の記事を参照に、たとえば...
+
+> feature/Riochin/add-login-function
+
+といった感じにしたい！（守らなくてもいい！！）
