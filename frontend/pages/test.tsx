@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
 const TestPage: React.FC = () => {
   return (
     <div>
-      <h1>Hello World</h1>
+      <h1>Hello</h1>
       <p>This is a test page.</p>
     </div>
   );
