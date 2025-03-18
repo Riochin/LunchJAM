@@ -1,11 +1,16 @@
 from fastapi import FastAPI
+
 from app.config.firebase_init import firebase_admin
 from app.routers.user_routes import router as user_router  # ルーターとしてインポート
+from app.routers import visits , cafeteria_status, qr
 
 app = FastAPI()
 
 # ルーターを追加（認証APIなど）
 app.include_router(user_router, prefix="/users")
+app.include_router(qr.router)  
+app.include_router(visits.router)  
+app.include_router(cafeteria_status.router)  # 追加
 
 # テスト用エンドポイント
 @app.get("/")

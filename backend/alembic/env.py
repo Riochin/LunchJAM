@@ -17,13 +17,13 @@ if config.config_file_name is not None:
 
 # add your model's MetaData object here
 # for 'autogenerate' support
-from database.database import Base
+from app.database.database import Base
 
-from database.models.settings import Setting  # 新しいモデルをインポート
-from database.models.cafeteria_status import CafeteriaStatus  # 新しいモデルをインポート
-from database.models.users import User  # 新しいモデルをインポート
-from database.models.visits import Visit  # 新しいモデルをインポート
-from database.models.predictions import Prediction  # 新しいモデルをインポート
+from app.database.models.settings import Setting  # 新しいモデルをインポート
+from app.database.models.cafeteria_status import CafeteriaStatus  # 新しいモデルをインポート
+from app.database.models.users import User  # 新しいモデルをインポート
+from app.database.models.visits import Visit  # 新しいモデルをインポート
+from app.database.models.predictions import Prediction  # 新しいモデルをインポート
 
 target_metadata = Base.metadata
 

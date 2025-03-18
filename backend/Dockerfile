@@ -16,8 +16,12 @@ RUN pip install alembic
 # psycopg2をインストール
 RUN pip install psycopg2
 
+RUN pip install python-dotenv
+
 # アプリのコードをコピー
 COPY . .
+
+EXPOSE 5432
 
 # 環境変数を設定
 ENV DATABASE_URL=postgresql://user:password@db:5432/mydatabase
