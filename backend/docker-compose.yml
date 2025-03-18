@@ -15,7 +15,7 @@ services:
     volumes:
       - .:/app  # ローカルのプロジェクトディレクトリをコンテナ内の /app にマウント
     environment:
-      - DATABASE_URL=postgresql://user:password@db:5432/mydatabase  # データベース接続用のURL
+      - DATABASE_URL=postgresql://user:password@localhost:5432/mydatabase  # データベース接続用のURL
     networks:
       - backend_network
 
@@ -27,6 +27,8 @@ services:
       POSTGRES_USER: user  # PostgreSQL のユーザー名
       POSTGRES_PASSWORD: password  # PostgreSQL のパスワード
       POSTGRES_DB: mydatabase  # 作成するデータベース名
+      POSTGRES_HOST_AUTH_METHOD: trust
+
     ports:
       - "5432:5432"  # ホストの 5432 番ポートをコンテナの 5432 番ポートにマッピング
     volumes:

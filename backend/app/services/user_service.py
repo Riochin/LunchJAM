@@ -27,3 +27,15 @@ def get_or_create_user(db: Session, id_token: str):
     except Exception as e:
         print(f"Error verifying token: {e}")
         return None
+
+def create_temp_user(db: Session, email: str, name: str, firebase_uid:str):
+    """仮ユーザーを作成する"""
+    try:
+        new_user = User(firebase_uid=firebase_uid,email=email, name=name)
+        db.add(new_user)
+        db.commit()
+        db.refresh(new_user)
+        return new_user
+    except Exception as e:
+        print(f"Error creating temp user: {e}")
+        return None
