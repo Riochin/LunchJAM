@@ -1,0 +1,39 @@
+/* QRPage.module.css */
+/* QRPage.module.css */
+.container {
+  background-color: #fdf5e6; /* 写真に近い薄い黄色 */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.qrContainer {
+  background-color: #fdf5e6;
+  padding: 2rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.qrCode {
+  width: 15rem;
+  height: 15rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+}
