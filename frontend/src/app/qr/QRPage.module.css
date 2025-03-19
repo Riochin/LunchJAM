@@ -1,0 +1,58 @@
+/* QRPage.module.css */
+.container {
+  background-image: url('/image/wood2.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.qrContainer {
+  background-color: white; /* 背景を白に変更 */
+  padding: 2rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20rem; /* 幅を調整 */
+}
+
+.qrCode {
+  width: 15rem;
+  height: 15rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  position: relative; /* ロゴを重ねるために追加 */
+}
+
+.logo {
+  position: absolute; /* QRコードの中央にロゴを配置 */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 3rem; /* ロゴのサイズを調整 */
+  height: 3rem;
+  background-color: lightgray; /* ロゴの背景色 */
+  border-radius: 50%; /* ロゴを丸くする */
+}
+
+.qrText {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
