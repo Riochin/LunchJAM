@@ -7,6 +7,8 @@ import {
   registerWithEmail,
   logout,
   getCurrentUser,
+  handleGoogleLogin,
+  handleEmailLogin,
 } from "./auth";
 
 export default function LoginPage() {
@@ -14,21 +16,23 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [user, setUser] = useState(getCurrentUser());
 
-  const handleGoogleLogin = async () => {
-    const loggedInUser = await loginWithGoogle();
-    if (loggedInUser) setUser(loggedInUser);
+  // Googleログイン処理
+  const handleGoogleLoginClick = async () => {
+    await handleGoogleLogin();
   };
 
-  const handleEmailLogin = async () => {
-    const loggedInUser = await loginWithEmail(email, password);
-    if (loggedInUser) setUser(loggedInUser);
+  // メール＆パスワードでログイン処理
+  const handleEmailLoginClick = async () => {
+    await handleEmailLogin(email, password);
   };
 
-  const handleRegister = async () => {
+  // メール＆パスワードで新規登録処理
+  const handleRegisterClick = async () => {
     const registeredUser = await registerWithEmail(email, password);
     if (registeredUser) setUser(registeredUser);
   };
 
+  // ログアウト処理
   const handleLogout = async () => {
     await logout();
     setUser(null);
@@ -51,7 +55,7 @@ export default function LoginPage() {
         <>
           <button
             className="p-2 bg-blue-500 text-white rounded"
-            onClick={handleGoogleLogin}
+            onClick={handleGoogleLoginClick}
           >
             Login with Google
           </button>
@@ -73,13 +77,13 @@ export default function LoginPage() {
             />
             <button
               className="w-full p-2 bg-green-500 text-white rounded"
-              onClick={handleEmailLogin}
+              onClick={handleEmailLoginClick}
             >
               Login with Email
             </button>
             <button
               className="w-full p-2 bg-gray-500 text-white rounded"
-              onClick={handleRegister}
+              onClick={handleRegisterClick}
             >
               Register
             </button>
