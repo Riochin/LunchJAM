@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
-import { login, logout } from "@/app/login/auth";
+import { loginWithEmail, logout } from "@/app/login/auth";
 
 export default function AuthButton() {
   const [user, setUser] = useState<User | null>(null); // 型を User | null に修正
@@ -17,7 +17,7 @@ export default function AuthButton() {
   }, []);
 
   return (
-    <button onClick={user ? logout : login}>
+    <button onClick={user ? logout : loginWithEmail}>
       {user ? "Sign Out" : "Sign In"}
     </button>
   );
