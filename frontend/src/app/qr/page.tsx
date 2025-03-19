@@ -11,7 +11,7 @@ const QRPage: React.FC = () => {
         <h2 className={styles.title}>〇〇さんいらっしゃい</h2>
         <div className={styles.qrContainer}>
           <div className={styles.qrCode}>
-            <BiQr size="5rem" /> {/* アイコンサイズ調整 */}
+            <BiQr size="5rem" />
           </div>
         </div>
       </main>
