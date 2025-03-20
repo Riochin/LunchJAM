@@ -1,94 +1,110 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 import {
-  loginWithGoogle,
-  loginWithEmail,
+  handleGoogleLogin,
+  handleEmailLogin,
   registerWithEmail,
   logout,
   getCurrentUser,
-  handleGoogleLogin,
-  handleEmailLogin,
-} from "./auth";
+} from './auth';
+import styles from './Login.module.css';
+import googleIcon from './google-icon.png'; // Googleアイコンをインポート
 
 export default function LoginPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [user, setUser] = useState(getCurrentUser());
+  const [showEmailFields, setShowEmailFields] = useState(false);
+  const [activeTab, setActiveTab] = useState('ログイン'); // アクティブなタブの状態を追加
 
-  // Googleログイン処理
   const handleGoogleLoginClick = async () => {
     await handleGoogleLogin();
   };
 
-  // メール＆パスワードでログイン処理
   const handleEmailLoginClick = async () => {
     await handleEmailLogin(email, password);
   };
 
-  // メール＆パスワードで新規登録処理
   const handleRegisterClick = async () => {
     const registeredUser = await registerWithEmail(email, password);
     if (registeredUser) setUser(registeredUser);
   };
 
-  // ログアウト処理
+  const handleEmailButtonClick = () => {
+    setShowEmailFields(true);
+  };
+
+  const handleTabClick = (tab) => {
+    setActiveTab(tab);
+    setShowEmailFields(tab === '登録');
+  };
+
   const handleLogout = async () => {
     await logout();
     setUser(null);
   };
 
   return (
-    <div className="flex flex-col items-center p-6 space-y-4">
-      <h1 className="text-2xl font-bold">Login</h1>
-      {user ? (
+    <div className={styles.loginContainer}>
+      <div className={styles.title}>Lunch JAM</div>
+      <div className={styles.logo}>
+        <img src="images/chef.png" alt="NewsPicks Logo" />
+      </div>
+      <div className={styles.tabContainer}>
+        <button
+          className={`${styles.tabButton} ${
+            activeTab === 'ログイン' ? styles.active : ''
+          }`}
+          onClick={() => handleTabClick('ログイン')}
+        >
+          ログイン
+        </button>
+        <button
+          className={`${styles.tabButton} ${
+            activeTab === '登録' ? styles.active : ''
+          }`}
+          onClick={() => handleTabClick('登録')}
+        >
+          登録
+        </button>
+      </div>
+      {!showEmailFields && (
         <>
-          <p>Welcome, {user.email}!</p>
           <button
-            className="p-2 bg-red-500 text-white rounded"
-            onClick={handleLogout}
-          >
-            Logout
-          </button>
-        </>
-      ) : (
-        <>
-          <button
-            className="p-2 bg-blue-500 text-white rounded"
+            className={styles.googleLoginButton}
             onClick={handleGoogleLoginClick}
           >
-            Login with Google
+            Googleでログイン
           </button>
-
-          <div className="w-full max-w-xs space-y-2">
-            <input
-              type="email"
-              placeholder="Email"
-              className="w-full p-2 border rounded"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              className="w-full p-2 border rounded"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <button
-              className="w-full p-2 bg-green-500 text-white rounded"
-              onClick={handleEmailLoginClick}
-            >
-              Login with Email
-            </button>
-            <button
-              className="w-full p-2 bg-gray-500 text-white rounded"
-              onClick={handleRegisterClick}
-            >
-              Register
-            </button>
-          </div>
+          <button
+            className={styles.emailLoginButton}
+            onClick={handleEmailButtonClick}
+          >
+            メールアドレスでログイン
+          </button>
         </>
+      )}
+      {showEmailFields && (
+        <div className={styles.emailFields}>
+          <input
+            type="email"
+            placeholder="メールアドレス"
+            className={styles.input}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="パスワード"
+            className={styles.input}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button className={styles.submitButton} onClick={handleRegisterClick}>
+            登録
+          </button>
+        </div>
       )}
     </div>
   );
