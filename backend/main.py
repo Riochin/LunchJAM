@@ -1,11 +1,14 @@
 from fastapi import FastAPI
 
-from app.config.firebase_init import firebase_admin
 from fastapi.middleware.cors import CORSMiddleware  # CORSの設定用にインポート
 from app.routers.user_routes import router as user_router  # ルーターとしてインポート
 from app.routers import visits , cafeteria_status, qr
+from fastapi.staticfiles import StaticFiles
 
 app = FastAPI()
+
+# staticフォルダをマウントして、静的ファイルを提供
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # CORSの設定
 app.add_middleware(
