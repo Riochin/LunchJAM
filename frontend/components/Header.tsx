@@ -1,16 +1,14 @@
 import React from "react";
-import { ChakraProvider } from "@chakra-ui/react";
-import AuthButton from "./AuthButton";
+import styles from "./Header.module.css";
+import { FaChevronLeft, FaBars } from "react-icons/fa";
 
 const Header: React.FC = () => {
   return (
-    <header className="bg-amber-200 p-4">
-      <div className="flex items-center justify-between">
-        <button className="text-2xl">&#8801;</button>
-        <h1 className="text-2xl font-bold">Lunuch JAM</h1>
-      </div>
-      <AuthButton />
-    </header>
+    <div className={styles.header}>
+      <img src="images/chef.png" className={styles.icon} />
+      <div className={styles.headerText}>Lunch JAM</div>
+      <FaBars size="1.2rem" color="#333" />
+    </div>
   );
 };
 

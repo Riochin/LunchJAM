@@ -1,58 +1,188 @@
 /* QRPage.module.css */
 .container {
-  background-image: url('/image/wood2.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+    background: #f8eedc;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.headerText {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
 }
 
 .main {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.title {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 25rem;
+    position: relative; /* オレンジ色の装飾のために追加 */
 }
 
 .qrContainer {
-  background-color: white; /* 背景を白に変更 */
-  padding: 2rem;
-  border-radius: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 20rem; /* 幅を調整 */
+    background-color: white;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+    margin-top: 80px;
+    width: 10rem;
+    height: 12rem;
+    position: relative;
 }
 
 .qrCode {
-  width: 15rem;
-  height: 15rem;
-  background-color: white;
-  border-radius: 0.5rem;
-  margin-top: 1rem;
-  position: relative; /* ロゴを重ねるために追加 */
+    width: 15rem;
+    height: 15rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.logo {
-  position: absolute; /* QRコードの中央にロゴを配置 */
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 3rem; /* ロゴのサイズを調整 */
-  height: 3rem;
-  background-color: lightgray; /* ロゴの背景色 */
-  border-radius: 50%; /* ロゴを丸くする */
+.text {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    margin-top: 1rem;
+    text-align: center;
 }
 
-.qrText {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
+.corner {
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 2px solid #333;
+}
+
+.cornerTopLeft {
+    top: 0.2rem;
+    left: 0.2rem;
+    border-right: none;
+    border-bottom: none;
+}
+
+.cornerTopRight {
+    top: 0.2rem;
+    right: 0.2rem;
+    border-left: none;
+    border-bottom: none;
+}
+
+.cornerBottomLeft {
+    bottom: 0.2rem;
+    left: 0.2rem;
+    border-right: none;
+    border-top: none;
+}
+
+.cornerBottomRight {
+    bottom: 0.2rem;
+    right: 0.2rem;
+    border-left: none;
+    border-top: none;
+}
+
+.footer {
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.footerItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footerIcon {
+    width: 2rem;
+    height: 2rem;
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.footerText {
+    font-size: 0.8rem;
+    color: #333;
+}
+
+.ornament {
+    position: absolute;
+    width: 4rem;
+    height: 50%;
+    background-color: #f66b56; /* オレンジ色 */
+    border-radius: 1rem;
+    margin-top: 13px;
+    opacity: 0.3; /* 透明度 */
+    top: 1rem; /* ornamentを上に移動 */
+}
+
+.ornamentLeft {
+    left: 0;
+}
+
+.ornamentRight {
+    right: 0;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 2rem;
+    margin-top: 5rem;
+    border-top: 1px solid #ccc; /* 横線を追加 */
+    border-bottom: 1px solid #ccc; /* 横線を追加 */
+    padding-top: 2rem;
+    padding-bottom: 2rem; /* 横線とボタンの間隔 */
+}
+
+.footerItem:nth-child(2) {
+    border-left: 1px solid #ccc; /* 垂直線を追加 */
+    padding-left: 1rem; /* 垂直線とアイコンの間隔 */
+    margin-left: 1rem; /* 垂直線とアイコンの間隔 */
+}
+.button {
+    width: 6rem;
+    height: 6rem;
+    background-color: white;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonIcon {
+    width: 2rem;
+    height: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.buttonText {
+    font-size: 0.8rem;
+    color: #333;
 }
