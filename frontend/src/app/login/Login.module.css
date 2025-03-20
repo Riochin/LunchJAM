@@ -1,0 +1,108 @@
+/* Login.module.css */
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* 上寄せに変更 */
+  min-height: 100vh;
+  background-color: #f8eedc;
+  padding-top: 2rem; /* 上部の余白を追加 */
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-family: 'Quicksand', sans-serif; /* 追加 */
+}
+
+.logo {
+  margin-bottom: 2rem;
+}
+
+.logo img {
+  width: 200px;
+}
+
+.tabContainer {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.tabButton {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  position: relative; /* 追加 */
+}
+
+.tabButton.active {
+  border-bottom-color: #1877f2;
+}
+
+.googleLoginButton {
+  width: 90%;
+  max-width: 400px;
+  padding: 1rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: red; /* 赤色に変更 */
+  color: white;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.emailLoginButton {
+  width: 90%;
+  max-width: 400px;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: rgb(6, 92, 14);
+  color: #fff;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.emailFields {
+  width: 90%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.input {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.submitButton {
+  padding: 1rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: #28a745;
+  color: white;
+  cursor: pointer;
+}
+.successMessage {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #c3e6cb;
+  border-radius: 4px;
+}
