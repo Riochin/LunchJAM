@@ -10,6 +10,7 @@ import {
 } from './auth';
 import styles from './Login.module.css';
 import googleIcon from './google-icon.png'; // Googleアイコンをインポート
+import { useRouter } from 'next/navigation'; // 追加
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -17,9 +18,18 @@ export default function LoginPage() {
   const [user, setUser] = useState(getCurrentUser());
   const [showEmailFields, setShowEmailFields] = useState(false);
   const [activeTab, setActiveTab] = useState('ログイン'); // アクティブなタブの状態を追加
+  const [loginSuccess, setLoginSuccess] = useState<boolean>(false); // 追加
+  const router = useRouter(); // 追加
 
   const handleGoogleLoginClick = async () => {
-    await handleGoogleLogin();
+    const success = await handleGoogleLogin(); // ログイン成功時にtrueが返るように修正
+    if (success) {
+      setLoginSuccess(true);
+      setTimeout(() => {
+        setLoginSuccess(false);
+        router.push('/'); // ルーティングページに移動
+      }, 1500); // 1.5秒後にメッセージを消してルーティング
+    }
   };
 
   const handleEmailLoginClick = async () => {
@@ -49,7 +59,11 @@ export default function LoginPage() {
     <div className={styles.loginContainer}>
       <div className={styles.title}>Lunch JAM</div>
       <div className={styles.logo}>
-        <img src="images/chef.png" alt="NewsPicks Logo" />
+        <img src="images/chef.png" alt="食堂混雑可視化APP" />
+        {loginSuccess && (
+          <div className={styles.successMessage}>ログイン成功！</div>
+        )}{' '}
+        {/* 追加 */}
       </div>
       <div className={styles.tabContainer}>
         <button
