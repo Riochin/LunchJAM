@@ -1,21 +1,67 @@
 import React from 'react';
-import Footer from '../../../components/Footer';
-import styles from './QRPage.module.css'; // 追加
-import { ChakraProvider } from '@chakra-ui/react';
-import { BiQr } from 'react-icons/bi';
+import styles from './QRPage.module.css';
+import { BsQrCode } from 'react-icons/bs';
+import { FaUserCircle, FaChartLine } from 'react-icons/fa'; // 追加
+import {
+  FaChevronLeft,
+  FaBars,
+  FaHamburger,
+  FaMobileAlt,
+  FaEnvelope,
+  FaCamera,
+} from 'react-icons/fa';
+import { PiCoinsDuotone } from 'react-icons/pi';
+import { VscAccount } from 'react-icons/vsc';
+import Link from 'next/link';
+import Header from '../../../components/Header';
 
 const QRPage: React.FC = () => {
   return (
     <div className={styles.container}>
       <main className={styles.main}>
-        <h2 className={styles.title}>〇〇さんいらっしゃい</h2>
+        <div className={`${styles.ornament} ${styles.ornamentLeft}`}></div>
+        <div className={`${styles.ornament} ${styles.ornamentRight}`}></div>
         <div className={styles.qrContainer}>
           <div className={styles.qrCode}>
-            <BiQr size="5rem" /> {/* アイコンサイズ調整 */}
+            <BsQrCode size="8rem" />
+          </div>
+        </div>
+        <div className={styles.text}>Scan Me</div>
+        <div className={styles.buttonContainer}>
+          <div className={styles.button}>
+            <Link href="/congestion" className={styles.button}>
+              <FaChartLine className={styles.icon} />
+            </Link>
+            <div className={styles.buttonText}>混雑グラフ</div>
+          </div>
+          <div className={styles.button}>
+            <Link href="/mypoint" className={styles.button}>
+              <PiCoinsDuotone size="2rem" />
+            </Link>
+            <div className={styles.buttonText}>マイポイント</div>
+          </div>
+          <div className={styles.button}>
+            <Link href="/mypage" className={styles.button}>
+              <VscAccount size="2rem" />
+            </Link>
+            <div className={styles.buttonText}>マイページ</div>
+          </div>
+        </div>
+        <div className={styles.footer}>
+          <div className={styles.footerItem}>
+            <div className={styles.footerIcon}>
+              <FaEnvelope size="1rem" />
+            </div>
+            <div className={styles.footerText}>Call-Action</div>
+          </div>
+          <div className={styles.footerItem}>
+            <div className={styles.footerIcon}>
+              <FaCamera size="1rem" />
+            </div>
+            <div className={styles.footerText}>カメラ</div>
           </div>
         </div>
       </main>
-      <Footer />
     </div>
   );
 };

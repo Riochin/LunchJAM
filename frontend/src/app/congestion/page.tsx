@@ -17,6 +17,7 @@ const Congestion: React.FC = () => {
           <DateTime></DateTime>
         </div>
         <div className="graph-container">
+          /*グラフの表示 */
           <div className="graph"></div>
         </div>
       </div>

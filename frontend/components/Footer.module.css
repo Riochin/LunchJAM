@@ -1,6 +1,6 @@
 /* Footer.module.css */
 .footer {
-  background-color: #fce9b7;
+  background-color: #f0efe9; /* 薄いベージュの背景 */
   padding: 1rem;
   display: flex;
   justify-content: center;
