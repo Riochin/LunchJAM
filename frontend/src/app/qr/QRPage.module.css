@@ -5,13 +5,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-y: auto; /* 追加 */
 }
 
 .header {
   width: 100%;
   padding: 1rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* 変更 */
   align-items: center;
 }
 
@@ -19,6 +20,7 @@
   font-size: 1rem;
   font-weight: bold;
   color: #333;
+  text-align: center;
 }
 
 .main {
@@ -27,7 +29,9 @@
   align-items: center;
   justify-content: center;
   width: 25rem;
-  position: relative; /* オレンジ色の装飾のために追加 */
+  position: relative;
+  min-height: calc(687px - 60px - 60px); /* 例：ヘッダー60px、フッター80px */
+  flex-grow: 2; /* 追加 */
 }
 
 .qrContainer {
@@ -44,8 +48,8 @@
 }
 
 .qrCode {
-  width: 8rem; /* 変更 */
-  height: 8rem; /* 変更 */
+  width: 10rem; /* 変更 */
+  height: 10rem; /* 変更 */
   background-color: white;
   border-radius: 0.5rem;
   position: relative;
@@ -60,7 +64,7 @@
 }
 
 .text {
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: bold;
   color: #333;
   margin-top: 1rem;
@@ -69,8 +73,8 @@
 
 .corner {
   position: absolute;
-  width: 1rem; /* 必要に応じて変更 */
-  height: 1rem; /* 必要に応じて変更 */
+  width: 1.5rem;
+  height: 1.5rem;
   border: 2px solid #333;
 }
 
@@ -104,7 +108,9 @@
 
 .footer {
   width: 100%;
-  padding: 1rem;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  height: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -114,6 +120,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative; /* 追加 */
 }
 
 .footerIcon {
@@ -134,11 +141,17 @@
   color: #333;
 }
 
+.spacer {
+  width: 1px;
+  height: 6rem;
+  background-color: #ccc;
+}
+
 .ornament {
   position: absolute;
   width: 4rem;
-  height: 50%;
-  background-color: #f66b56; /* オレンジ色 */
+  height: 40%;
+  background-color: #f86d59; /* オレンジ色 */
   border-radius: 1rem;
   margin-top: 13px;
   opacity: 0.3; /* 透明度 */
@@ -156,20 +169,26 @@
 .buttonContainer {
   display: flex;
   justify-content: space-around;
-  width: 100%;
-  margin-bottom: 2rem;
-  margin-top: 5rem;
+  width: 80%;
   border-top: 1px solid #ccc; /* 横線を追加 */
   border-bottom: 1px solid #ccc; /* 横線を追加 */
-  padding-top: 2rem;
-  padding-bottom: 2rem; /* 横線とボタンの間隔 */
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
 }
 
-.footerItem:nth-child(2) {
-  border-left: 1px solid #ccc; /* 垂直線を追加 */
-  padding-left: 1rem; /* 垂直線とアイコンの間隔 */
-  margin-left: 1rem; /* 垂直線とアイコンの間隔 */
+.verticalLine {
+  position: absolute;
+  top: 50%;
+  left: 50%; /* 削除 */
+  transform: translateY(-50%);
+  width: 1px;
+  height: 2rem;
+  background-color: #ccc;
+  margin-left: -5rem; /* 追加 */
 }
+
 .button {
   width: 6rem;
   height: 6rem;

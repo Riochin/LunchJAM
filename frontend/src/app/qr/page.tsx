@@ -4,14 +4,12 @@ import app from '../firebase'; // 上記のfirebaseConfig.jsをインポート
 
 import React, { useEffect, useState } from 'react';
 import styles from './QRPage.module.css'; // 追加
-import { ChakraProvider } from '@chakra-ui/react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth'; // Firebaseの認証機能を使用
 import { FaChartLine } from 'react-icons/fa'; // 追加
 import { FaEnvelope, FaCamera } from 'react-icons/fa';
 import { PiCoinsDuotone } from 'react-icons/pi';
 import { VscAccount } from 'react-icons/vsc';
 import Link from 'next/link';
-import Header from '../../../components/Header';
 
 const QRPage: React.FC = () => {
   const [qrUrl, setQrUrl] = useState<string | null>(null);
@@ -110,6 +108,7 @@ const QRPage: React.FC = () => {
             </div>
             <div className={styles.footerText}>Call-Action</div>
           </div>
+          <div className={styles.spacer}></div> {/* 追加 */}
           <div className={styles.footerItem}>
             <div className={styles.footerIcon}>
               <FaCamera size="1rem" />
