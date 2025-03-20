@@ -4,9 +4,9 @@ __pycache__/
 *.pyc
 *.pyo
 lunchjam-99a15-firebase-adminsdk-fbsvc-4e1d64e6f4.json
+qr_codes/
 
 # Next.js
 frontend/node_modules/
 .next/
 .env
-

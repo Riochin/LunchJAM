@@ -66,8 +66,8 @@ export const getCurrentUser = (): User | null => {
 const sendGoogleLoginToBackend = async (user: User) => {
   const idToken = await user.getIdToken();
   const backendUrl = "http://127.0.0.1:8000/" + "users/register";
-  console.log("backendUrl: " + backendUrl);
-  console.log("idToken: " + idToken);
+  // console.log("backendUrl: " + backendUrl);
+  // console.log("idToken: " + idToken);
 
   try {
     const response = await axios.post(backendUrl, { token: idToken });
