@@ -16,6 +16,7 @@ class TempUserData(BaseModel):
 
 @router.post("/register")
 def register_user(data: TokenData, db: Session = Depends(get_db)):
+    # print(data)
     """FirebaseのIDトークンを検証し、ユーザーを取得または登録する"""
     user = get_or_create_user(db, data.token)
 

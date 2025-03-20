@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, DateTime
 from sqlalchemy.orm import relationship
-from datetime import datetime,timedelta,timezone
+from datetime import datetime, timedelta, timezone
 from ..database import Base
 
 class User(Base):
@@ -13,6 +13,8 @@ class User(Base):
     firebase_uid = Column(String, unique=True, nullable=False)
     name = Column(String, nullable=False)
     email = Column(String, unique=True, nullable=False)
+    hashed_qr_url = Column(String, nullable=True)  # 追加
+
     created_at = Column(DateTime, default=datetime.now(JST))
 
     visits = relationship("Visit", back_populates="user")
