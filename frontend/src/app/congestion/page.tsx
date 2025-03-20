@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 import React from 'react';
 import DateTime from '../../../components/DateTime';
 import Header from '../../../components/Header';
@@ -31,4 +29,3 @@ const Congestion: React.FC = () => {
 };
 
 export default Congestion;
->>>>>>> ayame/header2
