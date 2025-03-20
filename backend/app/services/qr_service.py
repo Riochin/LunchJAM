@@ -47,8 +47,12 @@ def get_qr(user_id: str, db: Session = Depends(get_db)):
     """ユーザーIDに対応するQRコードのURLを取得し、返す"""
 
     # ユーザーのQRコードURLをDBから取得
-    user = db.query(User).filter(User.id == user_id).first()
+    user = db.query(User).filter(User.firebase_uid == user_id).first()
     if not user or not user.hashed_qr_url:
         raise HTTPException(status_code=404, detail="QR code not found")
 
-    return JSONResponse(content={"qr_url": user.hashed_qr_url})
+
+    response_url = "http://127.0.0.1:8000"+user.hashed_qr_url
+    print(response_url)
+
+    return JSONResponse(content={"qr_url": response_url})
