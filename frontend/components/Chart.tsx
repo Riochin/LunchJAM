@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 function Chart() {
   const [chartData, setChartData] = useState([]);
@@ -6,10 +7,10 @@ function Chart() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get('/api/chart-data'); // APIエンドポイント
+        const response = await axios.get("/api/chart-data"); // APIエンドポイント
         setChartData(response.data);
       } catch (error) {
-        console.error('データの取得に失敗しました:', error);
+        console.error("データの取得に失敗しました:", error);
       }
     }
     fetchData();

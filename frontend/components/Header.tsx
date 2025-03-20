@@ -1,5 +1,6 @@
 import React from "react";
 import { ChakraProvider } from "@chakra-ui/react";
+import AuthButton from "./AuthButton";
 
 const Header: React.FC = () => {
   return (
@@ -8,6 +9,7 @@ const Header: React.FC = () => {
         <button className="text-2xl">&#8801;</button>
         <h1 className="text-2xl font-bold">Lunuch JAM</h1>
       </div>
+      <AuthButton />
     </header>
   );
 };
