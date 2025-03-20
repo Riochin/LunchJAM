@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
 from app.database.models import User
 from firebase_admin import auth
+from app.services.qr_service import generate_qr
 
 def get_or_create_user(db: Session, id_token: str):
     """FirebaseのIDトークンを検証し、ユーザーを取得または作成する"""
@@ -21,6 +22,8 @@ def get_or_create_user(db: Session, id_token: str):
         db.add(new_user)
         db.commit()
         db.refresh(new_user)
+        generate_qr(str(new_user.id), db)  # QRコードを生成
+
 
         return new_user
 
