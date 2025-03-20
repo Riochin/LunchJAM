@@ -1,26 +1,17 @@
-"use client";
+'use client';
 
-import app from "../firebase"; // 上記のfirebaseConfig.jsをインポート
+import app from '../firebase'; // 上記のfirebaseConfig.jsをインポート
 
-import React, { useEffect, useState } from "react";
-import styles from "./QRPage.module.css"; // 追加
-import { ChakraProvider } from "@chakra-ui/react";
-import { BiQr } from "react-icons/bi";
-import { getAuth, onAuthStateChanged } from "firebase/auth"; // Firebaseの認証機能を使用
-import { BsQrCode } from "react-icons/bs";
-import { FaUserCircle, FaChartLine } from "react-icons/fa"; // 追加
-import {
-  FaChevronLeft,
-  FaBars,
-  FaHamburger,
-  FaMobileAlt,
-  FaEnvelope,
-  FaCamera,
-} from "react-icons/fa";
-import { PiCoinsDuotone } from "react-icons/pi";
-import { VscAccount } from "react-icons/vsc";
-import Link from "next/link";
-import Header from "../../../components/Header";
+import React, { useEffect, useState } from 'react';
+import styles from './QRPage.module.css'; // 追加
+import { ChakraProvider } from '@chakra-ui/react';
+import { getAuth, onAuthStateChanged } from 'firebase/auth'; // Firebaseの認証機能を使用
+import { FaChartLine } from 'react-icons/fa'; // 追加
+import { FaEnvelope, FaCamera } from 'react-icons/fa';
+import { PiCoinsDuotone } from 'react-icons/pi';
+import { VscAccount } from 'react-icons/vsc';
+import Link from 'next/link';
+import Header from '../../../components/Header';
 
 const QRPage: React.FC = () => {
   const [qrUrl, setQrUrl] = useState<string | null>(null);
@@ -51,16 +42,16 @@ const QRPage: React.FC = () => {
       const fetchQrCode = async () => {
         try {
           const response = await fetch(
-            `${process.env.NEXT_PUBLIC_BACKEND_URL}/qr/get-qr/${userId}`,
+            `${process.env.NEXT_PUBLIC_BACKEND_URL}/qr/get-qr/${userId}?size=200`
           );
           if (response.ok) {
             const data = await response.json(); // もしバックエンドがJSON形式でURLを返している場合
             setQrUrl(data.qr_url); // 返ってきたURLを状態にセット
           } else {
-            console.error("QRコードの取得に失敗しました");
+            console.error('QRコードの取得に失敗しました');
           }
         } catch (error) {
-          console.error("エラーが発生しました:", error);
+          console.error('エラーが発生しました:', error);
         }
       };
 
