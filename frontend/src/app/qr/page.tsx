@@ -57,7 +57,7 @@ const QRPage: React.FC = () => {
 
           const occupancyRate = (occupancy / capacity) * 100;
 
-          if (occupancyRate > 90) {
+          if (occupancyRate >= 80) {
             setCongestionLevel("high");
           } else if (occupancyRate >= 50) {
             setCongestionLevel("medium");
@@ -131,21 +131,19 @@ const QRPage: React.FC = () => {
           <div className={styles.congestionLabel}>〜食堂の混雑状況〜</div>
           {congestionLevel === "high" && (
             <div>
-              <img src="images/crowd.png" className={styles.congestionImage} />
-              <div className={styles.congestionText}>
-                混雑しています（赤色）
-              </div>
+              <img src="images/high.PNG" className={styles.congestionImage} />
+              <div className={styles.congestionText}>混雑しています</div>
             </div>
           )}
           {congestionLevel === "medium" && (
             <div>
-              <img src="images/medium.png" className={styles.congestionImage} />
-              <div className={styles.congestionText}>ふつう（オレンジ色）</div>
+              <img src="images/medium.PNG" className={styles.congestionImage} />
+              <div className={styles.congestionText}>ふつう</div>
             </div>
           )}
           {congestionLevel === "low" && (
             <div>
-              <img src="images/low.png" className={styles.congestionImage} />
+              <img src="images/low.jpg" className={styles.congestionImage} />
               <div className={styles.congestionText}>空いています</div>
             </div>
           )}

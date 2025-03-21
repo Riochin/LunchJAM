@@ -31,6 +31,7 @@ const headerStyle = {
 };
 
 const mainStyle = {
+  color: "#333",
   backgroundColor: "#f9f9f9",
   flex: 1,
 };

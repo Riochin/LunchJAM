@@ -2,6 +2,7 @@ from datetime import datetime, timedelta, timezone
 from sqlalchemy.orm import Session
 from fastapi import HTTPException
 from app.database.models import Visit, User
+from app.services.cafeteria_status import update_cafeteria_status_from_visits
 
 # 日本標準時 (JST) を設定
 JST = timezone(timedelta(hours=9))
@@ -40,6 +41,9 @@ def check_in_out(user_id: str, db: Session):
             db.add(new_visit)
             db.commit()
             db.refresh(new_visit)
+            # 混雑状況を更新
+            update_cafeteria_status_from_visits(db)
+
             return {
                 "message": "新規入室しました",
                 "entry_time": new_visit.entry_time,
@@ -48,6 +52,9 @@ def check_in_out(user_id: str, db: Session):
         else:
             latest_visit.exit_time = now
             db.commit()
+
+            # 混雑状況を更新
+            update_cafeteria_status_from_visits(db)
             return {
                 "message": "退室しました",
                 "exit_time": latest_visit.exit_time,
@@ -59,6 +66,8 @@ def check_in_out(user_id: str, db: Session):
     db.add(new_visit)
     db.commit()
     db.refresh(new_visit)
+
+    update_cafeteria_status_from_visits(db)  # 食堂の混雑状況を更新
 
     return {
         "message": "入室しました",
