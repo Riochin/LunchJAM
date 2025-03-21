@@ -47,6 +47,10 @@ export default function RootLayout({
           rel="stylesheet"
           crossOrigin="anonymous"
         />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&family=Klee+One&family=Quicksand:wght@600&display=swap"
+          rel="stylesheet"
+        ></link>
       </header>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}

@@ -11,9 +11,7 @@ const DateTime: React.FC = () => {
       let year = d.getFullYear();
       let month = d.getMonth() + 1;
       let day = d.getDate();
-      setDate(
-        year.toString() + '年' + month.toString() + '月' + day.toString() + '日'
-      );
+      setDate(month.toString() + '月' + day.toString() + '日');
 
       let hour = d.getHours().toString().padStart(2, '0');
       let minute = d.getMinutes().toString().padStart(2, '0');
@@ -24,9 +22,7 @@ const DateTime: React.FC = () => {
 
   return (
     <div className="Digit">
-      <p className="digit">
-        {date} <span>{time}</span>
-      </p>
+      <p className="digit">{date}</p>
     </div>
   );
 };
