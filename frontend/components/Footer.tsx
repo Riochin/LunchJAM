@@ -7,7 +7,7 @@ import { FaHome } from "react-icons/fa";
 const Footer = () => {
   return (
     <footer className={styles.footer}>
-      <Link href="/qr" className={styles.button}>
+      <Link href="/" className={styles.button}>
         <FaHome className={styles.icon} />
       </Link>
       <Link href="/congestion" className={styles.button}>
