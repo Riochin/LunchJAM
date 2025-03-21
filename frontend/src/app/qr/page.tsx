@@ -10,11 +10,17 @@ import { FaEnvelope, FaCamera } from 'react-icons/fa';
 import { PiCoinsDuotone } from 'react-icons/pi';
 import { VscAccount } from 'react-icons/vsc';
 import Link from 'next/link';
+import axios from 'axios'; // 追加
+import { FaExclamationTriangle, FaWalking, FaSmile } from 'react-icons/fa'; // 追加
+import { FaQuestionCircle } from 'react-icons/fa'; // 追加
 
 const QRPage: React.FC = () => {
   const [qrUrl, setQrUrl] = useState<string | null>(null);
   const [userId, setUserId] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [congestionLevel, setCongestionLevel] = useState<
+    'high' | 'medium' | 'low' | null
+  >(null); // 追加
 
   useEffect(() => {
     const auth = getAuth(app);
@@ -32,6 +38,46 @@ const QRPage: React.FC = () => {
 
     // クリーンアップ
     return () => unsubscribe();
+  }, []);
+  useEffect(() => {
+    const fetchCongestionData = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/cafeteria-status`
+        );
+        console.log('レスポンスデータ:', response.data);
+
+        if (
+          response.data &&
+          response.data.current_visitors !== undefined &&
+          response.data.current_visitors !== null
+        ) {
+          const occupancy = response.data.current_visitors;
+          const capacity = 100;
+
+          const occupancyRate = (occupancy / capacity) * 100;
+
+          if (occupancyRate > 90) {
+            setCongestionLevel('high');
+          } else if (occupancyRate >= 50) {
+            setCongestionLevel('medium');
+          } else {
+            setCongestionLevel('low');
+          }
+        } else {
+          console.log('混雑状況:low (0人またはデータなし)');
+          setCongestionLevel('null'); // null を設定
+        }
+      } catch (error) {
+        console.error('混雑状況の取得に失敗しました:', error);
+        setCongestionLevel(null);
+      }
+    };
+
+    fetchCongestionData();
+    const intervalId = setInterval(fetchCongestionData, 60000);
+
+    return () => clearInterval(intervalId);
   }, []);
 
   useEffect(() => {
@@ -66,11 +112,12 @@ const QRPage: React.FC = () => {
       <main className={styles.main}>
         <div className={`${styles.ornament} ${styles.ornamentLeft}`}></div>
         <div className={`${styles.ornament} ${styles.ornamentRight}`}></div>
+        {/* ユーザー名表示 */}
+        {userId && <div className={styles.username}>usernameさん</div>}
         <div className={styles.qrContainer}>
           {userId ? (
             qrUrl ? (
               <div className={styles.qrCode}>
-                {/* Only render the <img> if qrUrl is available */}
                 <img src={qrUrl || null} alt="User QR Code" />
               </div>
             ) : (
@@ -80,11 +127,42 @@ const QRPage: React.FC = () => {
             <p>ログインしていないので、QRコードを表示できません。</p>
           )}
         </div>
-        <div className={styles.text}>Scan Me</div>
+        {/* スペーサー追加 */}
+        <div className={styles.spacerQR}></div>
+        <div className={styles.congestionIcon}>
+          <div className={styles.congestionLabel}>〜食堂の混雑状況〜</div>
+          {congestionLevel === 'high' && (
+            <div>
+              <FaExclamationTriangle size="2rem" color="red" />
+              <div className={styles.congestionText}>
+                混雑しています（赤色）
+              </div>
+            </div>
+          )}
+          {congestionLevel === 'medium' && (
+            <div>
+              <FaWalking size="2rem" color="orange" />
+              <div className={styles.congestionText}>ふつう（オレンジ色）</div>
+            </div>
+          )}
+          {congestionLevel === 'low' && (
+            <div>
+              <FaSmile size="2rem" color="green" />
+              <div className={styles.congestionText}>空いています（緑色）</div>
+            </div>
+          )}
+          {congestionLevel === 'null' && (
+            <div className={styles.congestionContainer}>
+              <img src="images/low.png" className={styles.congestionImage} />
+              <div className={styles.congestionText}>空いています</div>
+            </div>
+          )}{' '}
+          {/* 追加 */}
+        </div>
         <div className={styles.buttonContainer}>
           <div className={styles.button}>
             <Link href="/congestion" className={styles.button}>
-              <FaChartLine className={styles.icon} />
+              <FaChartLine size="2rem" />
             </Link>
             <div className={styles.buttonText}>混雑グラフ</div>
           </div>

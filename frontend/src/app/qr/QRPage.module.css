@@ -1,7 +1,7 @@
 /* QRPage.module.css */
 .container {
   background: #f8eedc;
-  min-height: 100vh;
+  min-height: 120vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,10 +41,21 @@
   flex-direction: column;
   align-items: center;
   margin-bottom: 2rem;
-  margin-top: 80px;
-  width: 8rem; /* 変更 */
-  height: 10rem; /* 変更 */
+  margin-top: 20px; /* 変更 */
+  width: 8rem;
+  height: 10rem;
   position: relative;
+}
+
+.ornament {
+  position: absolute;
+  width: 4rem;
+  height: 40%;
+  background-color: #f86d59;
+  border-radius: 1rem;
+  margin-top: 13px;
+  opacity: 0.3;
+  top: 0; /* 変更 */
 }
 
 .qrCode {
@@ -108,19 +119,18 @@
 
 .footer {
   width: 100%;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-  height: 100%;
+  padding: 1rem 0; /* 上下のpaddingのみ調整 */
+  margin-bottom: 0; /* margin-bottomを0に */
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: center; /* 中央寄せ */
+  align-items: flex-start; /* 上寄せ */
 }
 
 .footerItem {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative; /* 追加 */
+  margin: 0 1rem; /* 左右のmarginで間隔調整 */
 }
 
 .footerIcon {
@@ -142,20 +152,7 @@
 }
 
 .spacer {
-  width: 1px;
-  height: 6rem;
-  background-color: #ccc;
-}
-
-.ornament {
-  position: absolute;
-  width: 4rem;
-  height: 40%;
-  background-color: #f86d59; /* オレンジ色 */
-  border-radius: 1rem;
-  margin-top: 13px;
-  opacity: 0.3; /* 透明度 */
-  top: 1rem; /* ornamentを上に移動 */
+  display: none; /* 垂線を非表示 */
 }
 
 .ornamentLeft {
@@ -172,8 +169,8 @@
   width: 80%;
   border-top: 1px solid #ccc; /* 横線を追加 */
   border-bottom: 1px solid #ccc; /* 横線を追加 */
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
   margin-top: 3rem;
   margin-bottom: 1rem;
 }
@@ -209,4 +206,57 @@
 .buttonText {
   font-size: 0.8rem;
   color: #333;
+}
+
+.congestionIcon {
+  margin-bottom: 1rem;
+  display: flex; /* 追加 */
+  align-items: center; /* 追加 */
+  flex-direction: column; /* 追加 */
+}
+
+.congestionLabel {
+  text-align: center;
+  margin-bottom: 5px;
+  margin-top: 1rem;
+}
+
+.congestionText {
+  text-align: center;
+  margin-top: 5px;
+  font-size: 0.8rem;
+}
+
+.congestionText.blue {
+  color: blue;
+}
+
+.congestionContainer {
+  display: flex;
+  align-items: center; /* 縦方向中央揃え */
+  background-color: #fff; /* 背景色 */
+  padding: 0.5rem; /* 余白を小さく */
+  border-radius: 3px; /* 角丸を小さく */
+}
+
+.congestionImage {
+  width: 3rem; /* 画像サイズを小さく */
+  height: 3rem; /* 画像サイズを小さく */
+  margin-right: 0.5rem; /* テキストとの間隔を小さく */
+}
+
+.congestionText {
+  font-size: 1rem; /* テキストサイズを小さく */
+  color: blue;
+}
+.username {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin-bottom: 1rem; /* QRコードとの間隔 */
+}
+
+.spacerQR {
+  height: 2rem; /* 間隔を広げる */
 }
