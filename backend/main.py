@@ -9,6 +9,17 @@ from app.config.firebase_init import firebase_admin
 
 app = FastAPI()
 
+# from fastapi_utils.tasks import repeat_every
+
+# @app.on_event("startup")
+# @repeat_every(seconds=60)  # 1分ごとに更新
+# async def update_cafeteria_status():
+#     db = next(get_db())
+#     try:
+#         update_cafeteria_status_from_visits(db)
+#     finally:
+#         db.close()
+
 # staticフォルダをマウントして、静的ファイルを提供
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
