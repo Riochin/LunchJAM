@@ -11,12 +11,12 @@
   font-weight: bold;
   color: #333;
   text-align: center;
-  margin-left: 2rem; /* 追加 */
+  margin-left: 4rem; /* 追加 */
   cursor: pointer;
 }
 
 .icon {
-  width: 5rem;
+  width: 2rem;
   height: auto;
   margin-right: 1rem;
   cursor: pointer;

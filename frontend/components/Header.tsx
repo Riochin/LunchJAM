@@ -1,13 +1,13 @@
 import React from 'react';
 import styles from './Header.module.css';
-import { FaChevronLeft, FaBars } from 'react-icons/fa';
+import { FaBars } from 'react-icons/fa';
 import Link from 'next/link';
 
 const Header: React.FC = () => {
   return (
     <div className={styles.header}>
       <Link href="/">
-        <img src="images/logo.jpg" className={styles.icon} />
+        <img src="images/logo.png" className={styles.icon} />
       </Link>
       <Link href="/">
         <div className={styles.headerText}>Lunch JAM</div>
