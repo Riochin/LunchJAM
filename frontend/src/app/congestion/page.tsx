@@ -4,6 +4,7 @@ import DateTime from '../../../components/DateTime';
 import Footer from '../../../components/Footer';
 
 const Congestion: React.FC = () => {
+  // 曜日別のWebサイト訪問者数のデータ
   return (
     <React.Fragment>
       <header>
@@ -16,10 +17,7 @@ const Congestion: React.FC = () => {
         <div className="current-time">
           <DateTime></DateTime>
         </div>
-        <div className="graph-container">
-          /*グラフの表示 */
-          <div className="graph"></div>
-        </div>
+        <div className="graph-container"></div>
       </div>
       <footer>
         <Footer></Footer>
