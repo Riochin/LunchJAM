@@ -24,9 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        {' '}
-        {/* 追加 */}
+      <header>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -37,7 +35,19 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap"
           rel="stylesheet"
         />
-      </head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />{' '}
+        {/* 重複を修正 */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+          rel="stylesheet"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Klee+One&family=Quicksand:wght@600&display=swap"
+          rel="stylesheet"
+          crossOrigin="anonymous"
+        />
+      </header>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
       </body>

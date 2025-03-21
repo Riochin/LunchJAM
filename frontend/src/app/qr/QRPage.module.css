@@ -217,8 +217,11 @@
 
 .congestionLabel {
   text-align: center;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   margin-top: 1rem;
+  font-family: 'Klee One', cursive;
+  font-weight: bold;
+  font-style: normal;
 }
 
 .congestionText {
@@ -259,4 +262,10 @@
 
 .spacerQR {
   height: 2rem; /* 間隔を広げる */
+}
+
+.klee-one-regular {
+  font-family: 'Klee One', cursive;
+  font-weight: 400;
+  font-style: normal;
 }
