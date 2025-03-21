@@ -12,6 +12,10 @@ def check_in_out(user_id: str, db: Session):
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
 
+    # ポイントが未設定の場合は0に初期化
+    if user.points is None:
+        user.points = 0
+
     latest_visit = (
         db.query(Visit)
         .filter(Visit.user_id == user_id)
@@ -25,6 +29,7 @@ def check_in_out(user_id: str, db: Session):
     if not user.last_visited_at or user.last_visited_at.date() < now.date():
         user.points += 1
         user.last_visited_at = now
+        db.commit()  # ポイント更新をコミット
 
     if latest_visit and latest_visit.exit_time is None:
         # 退室処理
