@@ -1,25 +1,25 @@
-'use client';
+"use client";
 
-import app from '../firebase'; // 上記のfirebaseConfig.jsをインポート
+import app from "../firebase"; // 上記のfirebaseConfig.jsをインポート
 
-import React, { useEffect, useState } from 'react';
-import styles from './QRPage.module.css'; // 追加
-import { getAuth, onAuthStateChanged } from 'firebase/auth'; // Firebaseの認証機能を使用
-import { FaChartLine } from 'react-icons/fa'; // 追加
-import { FaEnvelope, FaCamera } from 'react-icons/fa';
-import { PiCoinsDuotone } from 'react-icons/pi';
-import { VscAccount } from 'react-icons/vsc';
-import Link from 'next/link';
-import axios from 'axios'; // 追加
-import { FaExclamationTriangle, FaWalking, FaSmile } from 'react-icons/fa'; // 追加
-import { FaQuestionCircle } from 'react-icons/fa'; // 追加
+import React, { useEffect, useState } from "react";
+import styles from "./QRPage.module.css"; // 追加
+import { getAuth, onAuthStateChanged } from "firebase/auth"; // Firebaseの認証機能を使用
+import { FaChartLine } from "react-icons/fa"; // 追加
+import { FaEnvelope, FaCamera } from "react-icons/fa";
+import { PiCoinsDuotone } from "react-icons/pi";
+import { VscAccount } from "react-icons/vsc";
+import Link from "next/link";
+import axios from "axios"; // 追加
+import { FaExclamationTriangle, FaWalking, FaSmile } from "react-icons/fa"; // 追加
+import { FaQuestionCircle } from "react-icons/fa"; // 追加
 
 const QRPage: React.FC = () => {
   const [qrUrl, setQrUrl] = useState<string | null>(null);
   const [userId, setUserId] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [congestionLevel, setCongestionLevel] = useState<
-    'high' | 'medium' | 'low' | null
+    "high" | "medium" | "low" | null
   >(null); // 追加
 
   useEffect(() => {
@@ -43,9 +43,9 @@ const QRPage: React.FC = () => {
     const fetchCongestionData = async () => {
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/cafeteria-status`
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/cafeteria-status`,
         );
-        console.log('レスポンスデータ:', response.data);
+        console.log("レスポンスデータ:", response.data);
 
         if (
           response.data &&
@@ -53,23 +53,23 @@ const QRPage: React.FC = () => {
           response.data.current_visitors !== null
         ) {
           const occupancy = response.data.current_visitors;
-          const capacity = 100;
+          const capacity = 5;
 
           const occupancyRate = (occupancy / capacity) * 100;
 
           if (occupancyRate > 90) {
-            setCongestionLevel('high');
+            setCongestionLevel("high");
           } else if (occupancyRate >= 50) {
-            setCongestionLevel('medium');
+            setCongestionLevel("medium");
           } else {
-            setCongestionLevel('low');
+            setCongestionLevel("low");
           }
         } else {
-          console.log('混雑状況:low (0人またはデータなし)');
-          setCongestionLevel('null'); // null を設定
+          console.log("混雑状況:low (0人またはデータなし)");
+          setCongestionLevel("null"); // null を設定
         }
       } catch (error) {
-        console.error('混雑状況の取得に失敗しました:', error);
+        console.error("混雑状況の取得に失敗しました:", error);
         setCongestionLevel(null);
       }
     };
@@ -86,16 +86,16 @@ const QRPage: React.FC = () => {
       const fetchQrCode = async () => {
         try {
           const response = await fetch(
-            `${process.env.NEXT_PUBLIC_BACKEND_URL}/qr/get-qr/${userId}?size=200`
+            `${process.env.NEXT_PUBLIC_BACKEND_URL}/qr/get-qr/${userId}?size=200`,
           );
           if (response.ok) {
             const data = await response.json(); // もしバックエンドがJSON形式でURLを返している場合
             setQrUrl(data.qr_url); // 返ってきたURLを状態にセット
           } else {
-            console.error('QRコードの取得に失敗しました');
+            console.error("QRコードの取得に失敗しました");
           }
         } catch (error) {
-          console.error('エラーが発生しました:', error);
+          console.error("エラーが発生しました:", error);
         }
       };
 
@@ -131,32 +131,32 @@ const QRPage: React.FC = () => {
         <div className={styles.spacerQR}></div>
         <div className={styles.congestionIcon}>
           <div className={styles.congestionLabel}>〜食堂の混雑状況〜</div>
-          {congestionLevel === 'high' && (
+          {congestionLevel === "high" && (
             <div>
-              <FaExclamationTriangle size="2rem" color="red" />
+              <img src="images/crowd.png" className={styles.congestionImage} />
               <div className={styles.congestionText}>
                 混雑しています（赤色）
               </div>
             </div>
           )}
-          {congestionLevel === 'medium' && (
+          {congestionLevel === "medium" && (
             <div>
-              <FaWalking size="2rem" color="orange" />
+              <img src="images/medium.png" className={styles.congestionImage} />
               <div className={styles.congestionText}>ふつう（オレンジ色）</div>
             </div>
           )}
-          {congestionLevel === 'low' && (
+          {congestionLevel === "low" && (
             <div>
               <FaSmile size="2rem" color="green" />
               <div className={styles.congestionText}>空いています（緑色）</div>
             </div>
           )}
-          {congestionLevel === 'null' && (
+          {congestionLevel === "null" && (
             <div className={styles.congestionContainer}>
               <img src="images/low.png" className={styles.congestionImage} />
               <div className={styles.congestionText}>空いています</div>
             </div>
-          )}{' '}
+          )}{" "}
           {/* 追加 */}
         </div>
         <div className={styles.buttonContainer}>
