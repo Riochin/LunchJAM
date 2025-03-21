@@ -11,9 +11,11 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
+import { SlArrowRight } from 'react-icons/sl';
 import styles from './CongestionPage.module.css';
 import Header from '../../../components/Header';
 import Footer from '../../../components/Footer';
+import DateTime from '../../../components/DateTime';
 interface CongestionData {
   timestamp: string;
   visitors: number;
@@ -26,6 +28,20 @@ const CongestionPage: React.FC = () => {
   const [currentTime, setCurrentTime] = useState<string>('');
   const [currentVisitors, setCurrentVisitors] = useState<number>(0);
   const [latestDataTime, setLatestDataTime] = useState<string>('');
+  const [showDateList, setShowDateList] = useState(false);
+  const [selectedDate, setSelectedDate] = useState<string | null>(null);
+  const dateList = ['3/17', '3/18', '3/19'];
+
+  const handleArrowClick = () => {
+    setShowDateList(!showDateList);
+  };
+
+  const handleDateClick = (date: string) => {
+    setSelectedDate(date);
+    setShowDateList(false);
+    // ここで選択された日付のデータを非同期で取得する処理を実装する
+    console.log(`選択された日付: ${date}`);
+  };
 
   // 混雑度に応じたスタイルを決定する関数
   const getCongestionStyle = (visitors: number) => {
@@ -126,11 +142,18 @@ const CongestionPage: React.FC = () => {
   return (
     <div className={styles.container}>
       <Header />
-      <h1 className={styles.title}>食堂の混雑状況</h1>
+      <hr />
+      <h1 className={styles.title}>🍜食堂の混雑状況🍜</h1>
 
       {/* 現在の状況を表示するセクション */}
       <div className={styles.currentStatus}>
-        <div className={styles.currentTime}>現在時刻: {currentTime}</div>
+        <div className={styles.currentTime}>
+          <div>
+            <DateTime />
+          </div>{' '}
+          {/* 追加 */}
+          <div>現在時刻: {currentTime}</div>
+        </div>
         <div
           className={`${styles.currentVisitors} ${getCongestionStyle(
             currentVisitors
@@ -144,13 +167,29 @@ const CongestionPage: React.FC = () => {
       </div>
 
       {/* ツールバー */}
-      <div className={styles.toolbar}>
-        <div className={styles.toolbarContent}>
-          <div className={styles.toolbarSearch}>
-            <span className={styles.toolbarSearchIcon}></span>
-            <span>検索バー</span>
+      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <div className={styles.toolbar}>
+          <div className={styles.toolbarContent}>
+            <div className={styles.toolbarSearch}>
+              <span className={styles.toolbarSearchIcon}></span>
+              <span className={styles.toolbarText}>
+                {selectedDate || '3月のデータ'}
+              </span>
+            </div>
+            <SlArrowRight
+              onClick={handleArrowClick}
+              style={{ cursor: 'pointer' }}
+            />
           </div>
-          <span className={styles.toolbarMenuIcon}>☰</span>
+          {showDateList && (
+            <ul className={styles.dateList}>
+              {dateList.map((date) => (
+                <li key={date} onClick={() => handleDateClick(date)}>
+                  {date}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
 
