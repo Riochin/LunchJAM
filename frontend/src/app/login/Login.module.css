@@ -12,15 +12,35 @@
 .title {
   font-size: 2rem;
   margin-bottom: 2rem;
+  font-family: 'Quicksand', sans-serif;
+  position: relative; /* 追加 */
+}
+
+.title::after {
+  /* 追加 */
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -0.5rem; /* 線の位置調整 */
+  transform: translateX(-50%);
+  width: 100%; /* 線の幅調整 */
+  height: 1px;
+  background-color: #bebebe; /* 線の色調整 */
+}
+.title2 {
+  font-size: 1rem;
+  margin-bottom: 1rem;
   font-family: 'Quicksand', sans-serif; /* 追加 */
 }
 
 .logo {
   margin-bottom: 2rem;
+  border-radius: 10px;
 }
 
 .logo img {
-  width: 200px;
+  width: 15rem;
+  height: 15rem;
 }
 
 .tabContainer {
