@@ -1,0 +1,16 @@
+.timeInfo {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.currentTime {
+    font-size: 1.2em;
+    color: #333;
+}
+
+.latestDataTime {
+    font-size: 1.2em;
+    color: #666;
+}
