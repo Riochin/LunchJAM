@@ -122,6 +122,7 @@ const CongestionPage: React.FC = () => {
   if (data.length === 0)
     return <div className={styles.noData}>データがありません</div>;
 
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>食堂の混雑状況</h1>
