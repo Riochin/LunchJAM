@@ -110,8 +110,6 @@ const QRPage: React.FC = () => {
   return (
     <div className={styles.container}>
       <main className={styles.main}>
-        <div className={`${styles.ornament} ${styles.ornamentLeft}`}></div>
-        <div className={`${styles.ornament} ${styles.ornamentRight}`}></div>
         {/* ユーザー名表示 */}
         {userId && <div className={styles.username}>usernameさん</div>}
         <div className={styles.qrContainer}>
@@ -147,8 +145,8 @@ const QRPage: React.FC = () => {
           )}
           {congestionLevel === "low" && (
             <div>
-              <FaSmile size="2rem" color="green" />
-              <div className={styles.congestionText}>空いています（緑色）</div>
+              <img src="images/low.png" className={styles.congestionImage} />
+              <div className={styles.congestionText}>空いています</div>
             </div>
           )}
           {congestionLevel === "null" && (
@@ -184,7 +182,7 @@ const QRPage: React.FC = () => {
             <div className={styles.footerIcon}>
               <FaEnvelope size="1rem" />
             </div>
-            <div className={styles.footerText}>Call-Action</div>
+            <div className={styles.footerText}>お知らせ</div>
           </div>
           <div className={styles.spacer}></div> {/* 追加 */}
           <div className={styles.footerItem}>

@@ -1,27 +1,27 @@
 .header {
-  width: 100%;
-  padding: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .headerText {
-  font-size: 1rem;
-  font-weight: bold;
-  color: #333;
-  text-align: center;
-  margin-left: 4rem; /* 追加 */
-  cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-left: 4rem; /* 追加 */
+    cursor: pointer;
 }
 
 .icon {
-  width: 2rem;
-  height: auto;
-  margin-right: 1rem;
-  cursor: pointer;
+    width: 2rem;
+    height: auto;
+    margin-right: 1rem;
+    cursor: pointer;
 }
 
 .faBars {
-  margin-left: auto;
+    margin-left: auto;
 }

@@ -40,11 +40,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 2rem;
   margin-top: 20px; /* 変更 */
   width: 8rem;
   height: 10rem;
   position: relative;
+  margin-bottom: 1rem; /* 間隔を小さく */
 }
 
 .ornament {
@@ -171,7 +171,7 @@
   border-bottom: 1px solid #ccc; /* 横線を追加 */
   padding-top: 3rem;
   padding-bottom: 3rem;
-  margin-top: 3rem;
+  margin-top: 2rem;
   margin-bottom: 1rem;
 }
 
@@ -209,19 +209,19 @@
 }
 
 .congestionIcon {
-  margin-bottom: 1rem;
-  display: flex; /* 追加 */
-  align-items: center; /* 追加 */
-  flex-direction: column; /* 追加 */
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #f0e6d2;
+  width: 60%;
+  border-radius: 5rem;
 }
 
 .congestionLabel {
   text-align: center;
-  margin-bottom: 10px;
-  margin-top: 1rem;
-  font-family: 'Klee One', cursive;
-  font-weight: bold;
-  font-style: normal;
+  margin-bottom: 0.5rem; /* 間隔を小さく */
+  margin-top: 0.5rem; /* 間隔を小さく */
 }
 
 .congestionText {
@@ -236,21 +236,25 @@
 
 .congestionContainer {
   display: flex;
-  align-items: center; /* 縦方向中央揃え */
-  background-color: #fff; /* 背景色 */
-  padding: 0.5rem; /* 余白を小さく */
-  border-radius: 3px; /* 角丸を小さく */
+  align-items: center;
+  flex-direction: row; /* 横並びにする */
+  background-color: #e1a4a4;
+  padding: 0.5rem;
+  border-radius: 3px;
+  margin-bottom: 0.5rem; /* 追加 */
 }
 
 .congestionImage {
-  width: 3rem; /* 画像サイズを小さく */
-  height: 3rem; /* 画像サイズを小さく */
-  margin-right: 0.5rem; /* テキストとの間隔を小さく */
+  width: 5rem;
+  height: 5rem;
+  margin-right: 0.5rem;
+  align-items: center;
 }
 
 .congestionText {
-  font-size: 1rem; /* テキストサイズを小さく */
+  font-size: 1rem;
   color: blue;
+  margin: 0; /* テキストの余白を削除 */
 }
 .username {
   font-size: 1.2rem;
@@ -261,11 +265,5 @@
 }
 
 .spacerQR {
-  height: 2rem; /* 間隔を広げる */
-}
-
-.klee-one-regular {
-  font-family: 'Klee One', cursive;
-  font-weight: 400;
-  font-style: normal;
+  height: 1rem; /* 間隔を広げる */
 }
