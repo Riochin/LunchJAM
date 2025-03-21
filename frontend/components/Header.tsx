@@ -7,16 +7,12 @@ const Header: React.FC = () => {
   return (
     <div className={styles.header}>
       <Link href="/">
-        <img src="images/chef.png" className={styles.icon} />
+        <img src="images/logo.jpg" className={styles.icon} />
       </Link>
-      <div className={styles.headerTextContainer}>
-        {' '}
-        {/* div要素に変更 */}
-        <Link href="/">
-          <div className={styles.headerText}>Lunch JAM</div>
-        </Link>
-      </div>
-      <FaBars size="1.2rem" color="#333" />
+      <Link href="/">
+        <div className={styles.headerText}>Lunch JAM</div>
+      </Link>
+      <FaBars size="1.2rem" color="#333" className={styles.faBars} />
     </div>
   );
 };
