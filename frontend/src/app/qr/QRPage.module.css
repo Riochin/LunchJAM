@@ -1,271 +1,63 @@
-/* QRPage.module.css */
+/* CongestionPage.module.css */
 .container {
-  background: #f8eedc;
-  min-height: 120vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow-y: auto; /* 追加 */
+  font-family: sans-serif;
+  background-color: #f8f5f0; /* 全体の背景色 */
+  min-height: 100vh;
+  padding: 20px;
 }
 
-.header {
-  width: 100%;
-  padding: 1rem;
-  display: flex;
-  justify-content: center; /* 変更 */
-  align-items: center;
-}
-
-.headerText {
-  font-size: 1rem;
-  font-weight: bold;
-  color: #333;
+.title {
   text-align: center;
-}
-
-.main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 25rem;
-  position: relative;
-  min-height: calc(687px - 60px - 60px); /* 例：ヘッダー60px、フッター80px */
-  flex-grow: 2; /* 追加 */
-}
-
-.qrContainer {
-  background-color: white;
-  border-radius: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 2rem;
-  margin-top: 20px; /* 変更 */
-  width: 8rem;
-  height: 10rem;
-  position: relative;
-}
-
-.ornament {
-  position: absolute;
-  width: 4rem;
-  height: 40%;
-  background-color: #f86d59;
-  border-radius: 1rem;
-  margin-top: 13px;
-  opacity: 0.3;
-  top: 0; /* 変更 */
-}
-
-.qrCode {
-  width: 10rem; /* 変更 */
-  height: 10rem; /* 変更 */
-  background-color: white;
-  border-radius: 0.5rem;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.qrCode img {
-  width: 100%; /* 親要素の幅に合わせて表示 */
-  height: auto;
-}
-
-.text {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #333;
-  margin-top: 1rem;
-  text-align: center;
-}
-
-.corner {
-  position: absolute;
-  width: 1.5rem;
-  height: 1.5rem;
-  border: 2px solid #333;
-}
-
-.cornerTopLeft {
-  top: 0.2rem;
-  left: 0.2rem;
-  border-right: none;
-  border-bottom: none;
-}
-
-.cornerTopRight {
-  top: 0.2rem;
-  right: 0.2rem;
-  border-left: none;
-  border-bottom: none;
-}
-
-.cornerBottomLeft {
-  bottom: 0.2rem;
-  left: 0.2rem;
-  border-right: none;
-  border-top: none;
-}
-
-.cornerBottomRight {
-  bottom: 0.2rem;
-  right: 0.2rem;
-  border-left: none;
-  border-top: none;
-}
-
-.footer {
-  width: 100%;
-  padding: 1rem 0; /* 上下のpaddingのみ調整 */
-  margin-bottom: 0; /* margin-bottomを0に */
-  display: flex;
-  justify-content: center; /* 中央寄せ */
-  align-items: flex-start; /* 上寄せ */
-}
-
-.footerItem {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 1rem; /* 左右のmarginで間隔調整 */
-}
-
-.footerIcon {
-  width: 2rem;
-  height: 2rem;
-  background-color: #333;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-.footerText {
-  font-size: 0.8rem;
+  margin-bottom: 20px;
   color: #333;
 }
 
-.spacer {
-  display: none; /* 垂線を非表示 */
-}
-
-.ornamentLeft {
-  left: 0;
-}
-
-.ornamentRight {
-  right: 0;
-}
-
-.buttonContainer {
+.currentStatus {
   display: flex;
   justify-content: space-around;
-  width: 80%;
-  border-top: 1px solid #ccc; /* 横線を追加 */
-  border-bottom: 1px solid #ccc; /* 横線を追加 */
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-  margin-top: 3rem;
-  margin-bottom: 1rem;
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #f0e6d2; /* 現在の状況の背景色 */
+  border-radius: 8px;
 }
 
-.verticalLine {
-  position: absolute;
-  top: 50%;
-  left: 50%; /* 削除 */
-  transform: translateY(-50%);
-  width: 1px;
-  height: 2rem;
-  background-color: #ccc;
-  margin-left: -5rem; /* 追加 */
+.currentTime,
+.currentVisitors {
+  padding: 10px 15px;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.button {
-  width: 6rem;
-  height: 6rem;
-  background-color: white;
-  border-radius: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.high {
+  background-color: #ffcccc; /* 高混雑時の背景色 */
 }
 
-.buttonIcon {
-  width: 2rem;
-  height: 2rem;
-  margin-bottom: 0.5rem;
+.medium {
+  background-color: #ffe6cc; /* 中混雑時の背景色 */
 }
 
-.buttonText {
-  font-size: 0.8rem;
-  color: #333;
+.low {
+  background-color: #ccffcc; /* 低混雑時の背景色 */
 }
 
-.congestionIcon {
-  margin-bottom: 1rem;
-  display: flex; /* 追加 */
-  align-items: center; /* 追加 */
-  flex-direction: column; /* 追加 */
-}
-
-.congestionLabel {
-  text-align: center;
-  margin-bottom: 10px;
-  margin-top: 1rem;
-  font-family: 'Klee One', cursive;
-  font-weight: bold;
-  font-style: normal;
-}
-
-.congestionText {
-  text-align: center;
+.congestionMessage {
   margin-top: 5px;
-  font-size: 0.8rem;
+  font-size: 0.8em;
+  color: #666;
 }
 
-.congestionText.blue {
-  color: blue;
+.chartContainer {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
 }
 
-.congestionContainer {
-  display: flex;
-  align-items: center; /* 縦方向中央揃え */
-  background-color: #fff; /* 背景色 */
-  padding: 0.5rem; /* 余白を小さく */
-  border-radius: 3px; /* 角丸を小さく */
-}
-
-.congestionImage {
-  width: 3rem; /* 画像サイズを小さく */
-  height: 3rem; /* 画像サイズを小さく */
-  margin-right: 0.5rem; /* テキストとの間隔を小さく */
-}
-
-.congestionText {
-  font-size: 1rem; /* テキストサイズを小さく */
-  color: blue;
-}
-.username {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #333;
+.loading,
+.error,
+.noData {
   text-align: center;
-  margin-bottom: 1rem; /* QRコードとの間隔 */
-}
-
-.spacerQR {
-  height: 2rem; /* 間隔を広げる */
-}
-
-.klee-one-regular {
-  font-family: 'Klee One', cursive;
-  font-weight: 400;
-  font-style: normal;
+  margin-top: 50px;
+  color: #666;
 }
