@@ -58,8 +58,9 @@ export default function LoginPage() {
   return (
     <div className={styles.loginContainer}>
       <div className={styles.title}>Lunch JAM</div>
+      <div className={styles.title2}>〜食堂混雑可視化アプリ〜</div>
       <div className={styles.logo}>
-        <img src="images/chef.png" alt="食堂混雑可視化APP" />
+        <img src="images/logo.png" alt="食堂混雑可視化APP" />
         {loginSuccess && (
           <div className={styles.successMessage}>ログイン成功！</div>
         )}{' '}

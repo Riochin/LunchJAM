@@ -2,7 +2,7 @@
   width: 100%;
   padding: 1rem;
   display: flex;
-  justify-content: space-around; /* 変更 */
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -10,17 +10,18 @@
   font-size: 1rem;
   font-weight: bold;
   color: #333;
-  display: flex;
-  align-items: center;
-  text-align: center; /* 追加 */
-  flex-grow: 1; /* 追加 */
-  justify-content: center; /* 追加 */
+  text-align: center;
+  margin-left: 2rem; /* 追加 */
   cursor: pointer;
 }
 
 .icon {
-  width: 4rem; /* 幅を4remに設定（必要に応じて調整） */
-  height: auto; /* 高さを自動調整（必要に応じて調整） */
-  align-items: left; /* 追加 */
+  width: 5rem;
+  height: auto;
+  margin-right: 1rem;
   cursor: pointer;
+}
+
+.faBars {
+  margin-left: auto;
 }
