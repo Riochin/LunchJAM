@@ -1,5 +1,5 @@
 # LunchJAM 🍽️
-🏆Waffle Collegeミニハッカソン最優秀賞受賞
+🏆Waffle Collegeミニハッカソン優秀賞受賞
 > 食堂の混雑状況を可視化‼️
 > "今なら座って食べられます"!!💫
 
